@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup
 
-with open("index.html") as fp:
+with open("test.html") as fp:
     soup = BeautifulSoup(fp, "html.parser")
     print(soup)

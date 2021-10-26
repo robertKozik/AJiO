@@ -1,17 +1,17 @@
 
-###Automaty, Języki i Obliczenia
+### Automaty, Języki i Obliczenia
 ____
-####Temat: Wyodrębianie danych o gatunkach roślin
-####Technologie: python, beautifulsoup, pymongo
+#### Temat: Wyodrębianie danych o gatunkach roślin
+#### Technologie: python, beautifulsoup, pymongo
 ____
 
-######Setup:
+###### Setup:
 ```
 $ pip install beautifulsoup4
 $ pip install lxml
 $ pip install pymongo
 ```
-######Uruchomienie:
+###### Uruchomienie:
 ```
 $ python main.py
 ```
