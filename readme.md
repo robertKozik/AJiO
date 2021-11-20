@@ -9,7 +9,10 @@ ____
 ```
 $ pip install beautifulsoup4
 $ pip install lxml
+$ pip intall requests
 $ pip install pymongo
+$ pip install pymongo[srv]
+$ python -c "import ssl; print(getattr(ssl, 'HAS_SNI', False))"
 ```
 ###### Uruchomienie:
 ```
