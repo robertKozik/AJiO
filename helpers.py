@@ -22,7 +22,6 @@ def extract_table_data(soup):
     # find first header
     first_header = find_first_header(trs)
     if first_header == -1:
-        print("hi")
         return output_map
 
     for table_element in trs[first_header:]:
