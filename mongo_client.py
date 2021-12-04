@@ -1,6 +1,10 @@
 from pymongo import MongoClient
 
-class Client:
+class AbstractClient(object):
+    def foo(self):
+        raise NotImplementedError('subclasses must override clean_push()!')
+
+class Client(AbstractClient):
     url = "mongodb+srv://root:root@cluster0.qeao0.mongodb.net/plants?retryWrites=true&w=majority"
 
     def __init__(self, db):
@@ -16,7 +20,6 @@ class Client:
         return collection.insert_many(data)
 
     def clean_push(self, collection, data):
-        print(collection)
         selected_collection = self.db[collection]
         selected_collection.drop()
         self.push_multiple_to_db(collection=collection, data=data)

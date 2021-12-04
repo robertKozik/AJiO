@@ -3,11 +3,11 @@ import helpers
 import json
 from bs4 import BeautifulSoup
 
-from mongo_client import Client
+from mongo_client import AbstractClient
 
 class DataFetcher:
 
-    def __init__(self, urls: list, db_client: Client):
+    def __init__(self, urls: list, db_client: AbstractClient):
         self.urls = urls
         self.output_dict = []
         self.db_client = db_client
