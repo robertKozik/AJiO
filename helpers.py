@@ -16,35 +16,23 @@ def find_first_paragraph(soup):
 
 
 def extract_table_data(soup):
-    infobox = soup.find("table", class_="infobox biota")
-    trs = infobox.find_all("tr")
-    output_map = {}
-    # find first header
-    first_header = find_first_header(trs)
-    if first_header == -1:
-        return output_map
+    tables = soup.find_all("table", class_="wikitable")
+    selected_table = tables[1]
+    trs = selected_table.find_all("tr")
+    output_arr = []
 
-    for table_element in trs[first_header:]:
-        th = table_element.find("th")
-        td = table_element.find_all("td")
-
-        if th is not None:
-            last_added_head = th.get_text().strip()
-            output_map[last_added_head] = []
-
-        if td:  # array not empty
-            if len(td) > 1:  # entry has key itself
-                header = td[0].get_text().strip()
-                value = td[1].get_text().strip()
-                output_map[last_added_head] = output_map[last_added_head] + [
-                    {remove_unicode_chars(header): remove_unicode_chars(value)}
-                ]
-            else:
-                value = td[0].get_text().strip()
-                output_map[last_added_head] = output_map[last_added_head] + [
-                    remove_unicode_chars(value)
-                ]
-    return output_map
+    # extract table data from infobox
+    for tr in trs[1:]:
+        td = tr.find_all("td")
+        row_data = {}
+        row_data['country'] = td[0].find('a').get_text().strip()
+        row_data['2017'] = td[1].get_text().strip()
+        row_data['2018'] = td[2].get_text().strip()
+        row_data['2019'] = td[3].get_text().strip()
+        row_data['2020'] = td[4].get_text().strip()
+        row_data['2021'] = td[5].get_text().strip()
+        output_arr.append(row_data)
+    return output_arr
 
 
 def find_first_header(soup):
