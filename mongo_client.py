@@ -1,14 +1,12 @@
 from pymongo import MongoClient
 
 class AbstractClient(object):
-    def foo(self):
+    def clean_push(self):
         raise NotImplementedError('subclasses must override clean_push()!')
 
 class Client(AbstractClient):
-    url = "mongodb+srv://root:root@cluster0.qeao0.mongodb.net/plants?retryWrites=true&w=majority"
-
-    def __init__(self, db):
-        self.client = MongoClient(self.url)
+    def __init__(self, db, url = "mongodb://myUserAdmin:test123@localhost:27017"):
+        self.client = MongoClient(url)
         self.db = self.client[db]
 
     def push_one_to_db(self, collection, data):
